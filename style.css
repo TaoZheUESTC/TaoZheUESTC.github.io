@@ -1,0 +1,277 @@
+:root {
+    /* 模仿 ComfyUI 的暗色调调色板 */
+    --bg-body: #ffffff;
+    --bg-header: rgb(247, 242, 144);
+    --bg-sidebar: #0a0a0a;
+    --bg-footer: rgb(247, 242, 144);;
+    --text-main: #000000;
+    --text-muted: #484848;
+    --border: #262626;
+    --header-height: 64px;
+    --sidebar-width: 280px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+/* 顶部导航 */
+.navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--header-height);
+    background-color: var(--bg-header);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+}
+
+.nav-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    justify-content: space-between;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.logo a{
+    text-decoration: none;
+    color: var(--text-main);
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.nav-links a:hover {
+    color: var(--text-main);
+}
+
+.search-box input {
+    background: #f0f0f0;
+    border: 1px solid var(--border);
+    color: rgb(0, 0, 0);
+    padding: 6px 12px;
+    border-radius: 6px;
+    width: 200px;
+}
+
+.nav-ext a{
+    text-decoration: none;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.nav-ext a:hover {
+    color: var(--text-main);
+}
+
+/* 布局外壳 */
+.main-wrapper {
+    display: flex;
+    width: 100%;
+    margin-top: var(--header-height);
+    background-image: url(images/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.main-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column; /* 让 main 和 footer 纵向排列 */
+    min-width: 0; /* 防止内容溢出撑破布局 */
+}
+
+/* 侧边栏 */
+.sidebar {
+    width: var(--sidebar-width);
+    height: calc(100vh - var(--header-height));
+    position: sticky;
+    top: var(--header-height);
+    border-right: 1px solid var(--border);
+    border-left: 1px solid var(--border);
+    padding: 32px 16px;
+    overflow-y: auto;
+    flex-shrink: 0;
+}
+
+.sidebar-group {
+    margin-bottom: 12px;
+}
+
+.group-title {
+    display: block;
+    padding: 8px 8px;
+    color: var(--text-muted);
+    text-decoration: none;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.group-title:hover{
+    color: var(--text-main);
+    background: #e3e3e3;
+}
+
+.sidebar-nav ul {
+    list-style: none;
+}
+
+.sidebar-nav li a {
+    display: block;
+    padding: 8px 20px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    transition: background 0.2s;
+}
+
+.sidebar-nav li a:hover {
+    color: var(--text-main);
+    background: #e3e3e3;
+}
+
+/* 内容区 */
+.content {
+    flex: 1;
+    padding: 40px 60px;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+}
+
+.content li{
+    list-style: none;
+}
+
+article {
+    width: 100%;
+    max-width: 800px;
+    flex: 1;
+}
+
+article h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: 1.25rem;
+    color: var(--text-main);
+    margin-bottom: 2rem;
+}
+
+article section {
+    margin-bottom: 40px;
+}
+
+article h2 {
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+article li a{
+    text-decoration: none;
+}
+
+/* 代码块 */
+pre {
+    background: #111;
+    padding: 16px;
+    border-radius: 8px;
+    overflow-x: auto;
+    border: 1px solid var(--border);
+    font-family: 'Courier New', Courier, monospace;
+}
+
+/* 右侧目录 */
+.toc {
+    width: 200px;
+    position: sticky;
+    top: calc(var(--header-height) + 40px);
+    height: fit-content;
+}
+
+.toc-title{
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+.toc-title:hover{
+    color: var(--text-main);
+}
+
+.toc ul{
+    list-style: none;
+}
+
+.toc li a{
+    text-decoration: none;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    font-size: 0.9rem;
+    transition: color 0.2s;
+}
+
+.toc li a:hover {
+    color: var(--text-main);
+}
+
+/* 页脚样式 */
+.site-footer {
+    background-color: var(--bg-footer);
+    border-top: 1px solid var(--border);
+    width: 100%;
+    display: flex;
+}
+
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 12px 60px;
+    display: flex;
+    gap: 30px;
+}
+
+.footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    color: var(--text-main);
+    font-weight: 600;
+}
