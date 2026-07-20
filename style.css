@@ -283,3 +283,113 @@ a:link {
 .web-links a:visited {
     color: #1098ad;
 }
+
+
+/* ==============================================
+   移动端/手机端适配代码 (屏幕宽度 <= 768px)
+============================================== */
+@media (max-width: 768px) {
+    :root {
+        --sidebar-width: 100%;
+    }
+
+    /* 1. 顶部导航栏适配 */
+    .nav-container {
+        padding: 0 16px;
+        gap: 12px;
+    }
+
+    .logo {
+        font-size: 1.1rem;
+        flex-shrink: 0; /* 防止Logo被挤压变形 */
+    }
+
+    /* 在手机端隐藏搜索框和GitHub外链，腾出宝贵的屏幕空间 */
+    .navbar .search-box, 
+    .navbar .nav-ext {
+        display: none;
+    }
+
+    /* 允许导航链接在手机端水平滑动（以防未来增加更多链接） */
+    .nav-links {
+        gap: 16px;
+        font-size: 0.9rem;
+        overflow-x: auto;
+        white-space: nowrap;
+        padding-bottom: 2px;
+        -webkit-overflow-scrolling: touch; /* 使iOS滑动更流畅 */
+    }
+    .nav-links::-webkit-scrollbar {
+        display: none; /* 隐藏滑动条，保持视觉美观 */
+    }
+
+    /* 2. 整体布局重排：从横向并列改为纵向单列 */
+    .main-wrapper {
+        flex-direction: column;
+    }
+
+    /* 3. 侧边栏适配：不再固定在左侧，而是排在正文上方 */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: static; /* 取消 sticky 粘性定位 */
+        border-right: none;
+        border-left: none;
+        border-bottom: 1px solid var(--border);
+        padding: 20px 16px;
+    }
+
+    /* 减小侧边栏列表行高，适合手指点击 */
+    .sidebar-nav li a {
+        padding: 6px 12px;
+    }
+
+    /* 4. 内容区域适配 */
+    .content {
+        padding: 24px 16px; /* 大幅缩小左右的外边距，防止字被挤成一窄列 */
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    /* 5. 隐藏右侧“本页目录” (手机端屏幕窄，不适合展示目录) */
+    .toc {
+        display: none;
+    }
+
+    /* 6. 文章主体宽度撑满 */
+    article {
+        width: 100%;
+    }
+
+    article h1 {
+        font-size: 2rem; /* 稍微缩小主标题，防止在小手机上折行 */
+        margin-bottom: 0.8rem;
+    }
+
+    .description {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+    }
+
+    /* 7. 页脚自适应：在小屏上居中展示 */
+    .footer-container {
+        padding: 16px 20px;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+/* ==============================================
+   平板端适配代码 (屏幕宽度 769px 至 1024px)
+============================================== */
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* 平板端空间较电脑小，我们仅隐藏右边的「本页目录」，腾出位置给主正文和左侧边栏 */
+    .toc {
+        display: none;
+    }
+    .content {
+        padding: 30px 40px;
+    }
+}
