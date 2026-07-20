@@ -1,9 +1,9 @@
 :root {
     /* 模仿 ComfyUI 的暗色调调色板 */
     --bg-body: #ffffff;
-    --bg-header: rgb(247, 242, 144);
+    --bg-header: #f7f290;
     --bg-sidebar: #0a0a0a;
-    --bg-footer: rgb(247, 242, 144);;
+    --bg-footer: #f7f290;;
     --text-main: #000000;
     --text-muted: #484848;
     --border: #262626;
@@ -274,4 +274,12 @@ pre {
     font-size: 1.1rem;
     color: var(--text-main);
     font-weight: 600;
+}
+
+a:link {
+    color: #1098ad;
+}
+
+.web-links a:visited {
+    color: #1098ad;
 }
