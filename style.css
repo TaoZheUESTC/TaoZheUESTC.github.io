@@ -59,6 +59,13 @@ body {
     color: var(--text-main);
 }
 
+.logo a:link, 
+.logo a:visited, 
+.logo a:hover, 
+.logo a:active{
+    color: var(--text-main);
+}
+
 .nav-links {
     display: flex;
     gap: 20px;
@@ -69,6 +76,12 @@ body {
     text-decoration: none;
     color: var(--text-muted);
     transition: color 0.2s;
+}
+
+.nav-links a:link,
+.nav-links a:visited,
+.nav-links a:active {
+    color: var(--text-muted);
 }
 
 .nav-links a:hover {
@@ -88,6 +101,12 @@ body {
     text-decoration: none;
     color: var(--text-muted);
     transition: color 0.2s;
+}
+
+.nav-ext a:link,
+.nav-ext a:visited,
+.nav-ext a:active{
+    color: var(--text-muted);
 }
 
 .nav-ext a:hover {
@@ -139,6 +158,12 @@ body {
     transition: background 0.2s;
 }
 
+.group-title:link,
+.group-title:visited,
+.group-title:active{
+    color: var(--text-muted)
+}
+
 .group-title:hover{
     color: var(--text-main);
     background: #e3e3e3;
@@ -156,6 +181,12 @@ body {
     font-size: 0.9rem;
     border-radius: 4px;
     transition: background 0.2s;
+}
+
+.sidebar-nav li a:link,
+.sidebar-nav li a:visited,
+.sidebar-nav li a:active{
+    color: var(--text-muted);
 }
 
 .sidebar-nav li a:hover {
@@ -231,10 +262,6 @@ pre {
     transition: color 0.2s;
 }
 
-.toc-title:hover{
-    color: var(--text-main);
-}
-
 .toc ul{
     list-style: none;
 }
@@ -247,7 +274,13 @@ pre {
     transition: color 0.2s;
 }
 
-.toc li a:hover {
+.toc a:link,
+.toc a:visited,
+.toc a:active{
+    color: var(--text-muted);
+}
+
+.toc a:hover {
     color: var(--text-main);
 }
 
@@ -276,11 +309,10 @@ pre {
     font-weight: 600;
 }
 
-a:link {
-    color: #1098ad;
-}
-
-.web-links a:visited {
+.web-links a:visited,
+.web-links a:link,
+.web-links a:active,
+.web-links a:hover {
     color: #1098ad;
 }
 
