@@ -1,0 +1,28 @@
+# ============================================================
+# 本仓库 = GitHub Pages 纯静态站点。
+# 只提交「网页运行所需」的文件：
+#   index.html / utility.html / tutorial.html / style.css / images/ / favicon.ico / README.md
+#
+# 开发与测试文件全部集中在 /tools/ 目录，且该目录本身是一个【独立的本地 git 仓库】
+# （拥有自己的 .git 与版本历史）；下面整体排除它：既不会进站点仓库，也不会发布到 GitHub Pages。
+# ============================================================
+
+# 开发/测试工具目录（内含独立 git 仓库，整目录排除）
+/tools/
+
+# 兜底：若误在站点根目录执行 npm install，忽略其产物，避免污染站点仓库
+/node_modules/
+/package.json
+/package-lock.json
+
+# 编辑器 / 本地开发服务器配置（例如 Live Server 所在的工作区设置）
+/.vscode/
+
+# 无头浏览器截图与临时 profile
+/_shots/
+/_chromeprofile/
+
+# 日志与系统残留文件
+*.log
+Thumbs.db
+.DS_Store

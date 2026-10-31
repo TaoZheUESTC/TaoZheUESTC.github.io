@@ -2,6 +2,12 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <!-- 安全：内容安全策略(CSP) —— 默认拒绝一切未显式允许的来源，杜绝被注入的内容被执行 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'none'; frame-src https://player.bilibili.com http://player.bilibili.com">
+    <!-- 开发提示：注入式热重载脚本会被 script-src 'none' 拦截（页面浏览正常，手动刷新即可）；
+         需要热重载时，临时注释掉上面这行 CSP 即可。frame-src 放行 B 站播放器，视频功能不受影响。 -->
+    <!-- 隐私：跨源请求只发送站点来源、不发送路径；单个链接的 rel=noreferrer / referrerpolicy 仍可覆盖本策略 -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TZ Dev</title>
     <link rel="stylesheet" href="style.css">
@@ -11,7 +17,7 @@
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="#">TZ Dev</a>
+                <a href="index.html">TZ Dev</a>
             </div>
             <nav class="nav-links">
                 <a href="index.html">网站指南</a>
@@ -23,7 +29,7 @@
                 </div>
             </nav>
             <div class="nav-ext">
-                <a href="#">GitHub</a>
+                <a href="https://github.com/TaoZheUESTC" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" aria-label="GitHub（在新窗口打开）">GitHub</a>
             </div>
         </div>
     </header>
@@ -32,17 +38,17 @@
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <div class="sidebar-group">
-                    <a href="#" class="group-title">素材资源</a>
+                    <a href="#assets" class="group-title">素材资源</a>
                     <ul>
-                        <li><a href="#">2D</a></li>
-                        <li><a href="#">3D</a></li>
-                        <li><a href="#">Audio</a></li>
+                        <li><a href="#assets-2d">2D</a></li>
+                        <li><a href="#assets-3d">3D</a></li>
+                        <li><a href="#assets-audio">Audio</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-group">
-                    <a href="#" class="group-title">实用工具</a>
+                    <a href="#tools" class="group-title">实用工具</a>
                     <ul>
-                        <li><a href="#">视频类</a></li>
+                        <li><a href="#tools-video">视频类</a></li>
                     </ul>
                 </div>
             </nav>
@@ -53,75 +59,48 @@
                 <article>
                     <h1>资源工具</h1>
 
-                    <h2>素材资源</h2>
+                    <h2 id="assets">素材资源</h2>
                     <p class="description">包含2D、3D和Audio素材。</p>
 
                     <section>
-                        <h3>2D</h3>
+                        <h3 id="assets-2d">2D</h3>
                         <ul class="web-links">
-                            <li><a href="https://www.kenney.nl/" target="_blank">Kenney</a>提供2D图片资源等</li>
-                            <li><a href="https://opengameart.org/" target="_blank">OpenGameArt</a>提供2D图片资源等</li>
-                            <li><a href="https://itch.io/" target="_blank">Itch</a>提供2D图片资源等，还有小游戏试玩</li>
-                            <li><a href="https://craftpix.net/" target="_blank">Craftpix</a>提供2D图片资源等</li>
-                            <li><a href="https://pixabay.com/" target="_blank">Pixabay</a>提供各类图片资源等</li>
+                            <li><a href="https://www.kenney.nl/" target="_blank" rel="noopener noreferrer">Kenney</a>提供2D图片资源等</li>
+                            <li><a href="https://opengameart.org/" target="_blank" rel="noopener noreferrer">OpenGameArt</a>提供2D图片资源等</li>
+                            <li><a href="https://itch.io/" target="_blank" rel="noopener noreferrer">Itch</a>提供2D图片资源等，还有小游戏试玩</li>
+                            <li><a href="https://craftpix.net/" target="_blank" rel="noopener noreferrer">Craftpix</a>提供2D图片资源等</li>
+                            <li><a href="https://pixabay.com/" target="_blank" rel="noopener noreferrer">Pixabay</a>提供各类图片资源等</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h3>3D</h3>
+                        <h3 id="assets-3d">3D</h3>
                         <ul class="web-links">
-                            <li><a href="https://www.textures.com/" target="_blank">Textures</a>提供纹理贴图</li>
-                            <li><a href="https://www.aplaybox.com/" target="_blank">Aplaybox</a>提供3D模型等</li>
-                            <li><a href="https://www.mixamo.com/" target="_blank">Mixamo</a>提供骨骼动画等</li>
-                            <li><a href="https://budeco.top/" target="_blank">Budeco</a>提供blender各种资源</li>
+                            <li><a href="https://www.textures.com/" target="_blank" rel="noopener noreferrer">Textures</a>提供纹理贴图</li>
+                            <li><a href="https://www.aplaybox.com/" target="_blank" rel="noopener noreferrer">Aplaybox</a>提供3D模型等</li>
+                            <li><a href="https://www.mixamo.com/" target="_blank" rel="noopener noreferrer">Mixamo</a>提供骨骼动画等</li>
+                            <li><a href="https://budeco.top/" target="_blank" rel="noopener noreferrer">Budeco</a>提供blender各种资源</li>
                         </ul>
                     </section>
 
                     <section>
-                        <h3>Audio</h3>
+                        <h3 id="assets-audio">Audio</h3>
                         <ul class="web-links">
-                            <li><a href="https://freesound.org/" target="_blank">Freesound</a>提供各种音频资源</li>
-                            <li><a href="https://www.tosound.com/" target="_blank">Tosound</a>提供各种音频资源</li>
+                            <li><a href="https://freesound.org/" target="_blank" rel="noopener noreferrer">Freesound</a>提供各种音频资源</li>
+                            <li><a href="https://www.tosound.com/" target="_blank" rel="noopener noreferrer">Tosound</a>提供各种音频资源</li>
                         </ul>
                     </section>
 
-                    <h2>实用工具</h2>
+                    <h2 id="tools">实用工具</h2>
                     <p class="description">这里汇集了一些实用工具。</p>
 
                     <section>
-                        <h3>视频类</h3>
+                        <h3 id="tools-video">视频类</h3>
                         <ul class="web-links">
-                            <li><a href="https://snapany.com/zh" target="_blank">SnapAny</a>可从网站下载视频</li>
+                            <li><a href="https://snapany.com/zh" target="_blank" rel="noopener noreferrer">SnapAny</a>可从网站下载视频</li>
                         </ul>
                     </section>
                 </article>
-                
-                <nav class="toc">
-                    <h3>本页目录</h3>
-                    <div class="toc-group">
-                        <a href="#" class="toc-title">素材资源</a>
-                        <ul>
-                            <li><a href="#">Kenney</a></li>
-                            <li><a href="#">OpenGameArt</a></li>
-                            <li><a href="#">Itch</a></li>
-                            <li><a href="#">Craftpix</a></li>
-                            <li><a href="#">Pixabay</a></li>
-                            <li><a href="#">Textures</a></li>
-                            <li><a href="#">Aplaybox</a></li>
-                            <li><a href="#">Mixamo</a></li>
-                            <li><a href="#">Budeco</a></li>
-                            <li><a href="#">Freesound</a></li>
-                            <li><a href="#">Tosound</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="toc-group">
-                        <a href="#" class="toc-title">实用工具</a>
-                        <ul>
-                            <li><a href="#">SnapAny</a></li>
-                        </ul>
-                    </div>
-                </nav>
             </main>
 
             <footer class="site-footer">

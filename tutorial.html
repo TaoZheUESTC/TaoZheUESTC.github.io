@@ -2,6 +2,12 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <!-- 安全：内容安全策略(CSP) —— 默认拒绝一切未显式允许的来源，杜绝被注入的内容被执行 -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; base-uri 'none'; form-action 'none'; img-src 'self'; style-src 'self' 'unsafe-inline'; script-src 'none'; frame-src https://player.bilibili.com http://player.bilibili.com">
+    <!-- 开发提示：注入式热重载脚本会被 script-src 'none' 拦截（页面浏览正常，手动刷新即可）；
+         需要热重载时，临时注释掉上面这行 CSP 即可。frame-src 放行 B 站播放器，视频功能不受影响。 -->
+    <!-- 隐私：跨源请求只发送站点来源、不发送路径；单个链接的 rel=noreferrer / referrerpolicy 仍可覆盖本策略 -->
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TZ Dev</title>
     <link rel="stylesheet" href="style.css">
@@ -11,7 +17,7 @@
     <header class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <a href="#">TZ Dev</a>
+                <a href="index.html">TZ Dev</a>
             </div>
             <nav class="nav-links">
                 <a href="index.html">网站指南</a>
@@ -23,7 +29,7 @@
                 </div>
             </nav>
             <div class="nav-ext">
-                <a href="#">GitHub</a>
+                <a href="https://github.com/TaoZheUESTC" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" aria-label="GitHub（在新窗口打开）">GitHub</a>
             </div>
         </div>
     </header>
@@ -32,20 +38,20 @@
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <div class="sidebar-group">
-                    <a href="#" class="group-title">视频教程</a>
+                    <a href="#video-courses" class="group-title">视频教程</a>
                     <ul>
-                        <li><a href="#">Alex类银河恶魔城</a></li>
-                        <li><a href="#">酒老御视觉小说</a></li>
-                        <li><a href="#">U3D基础</a></li>
-                        <li><a href="#">Voidmatrix植物明星大乱斗</a></li>
+                        <li><a href="#video-unity-metroidvania">Alex类银河恶魔城</a></li>
+                        <li><a href="#video-visual-novel">酒老御视觉小说</a></li>
+                        <li><a href="#video-unity3d">U3D基础</a></li>
+                        <li><a href="#video-cpp-pvz">Voidmatrix植物明星大乱斗</a></li>
                     </ul>
                 </div>
                 <div class="sidebar-group">
-                    <a href="#" class="group-title">书本教程</a>
+                    <a href="#book-courses" class="group-title">书本教程</a>
                     <ul>
-                        <li><a href="#">游戏设计</a></li>
-                        <li><a href="#">游戏基础</a></li>
-                        <li><a href="#">计算机基础</a></li>
+                        <li><a href="#book-game-design">游戏设计</a></li>
+                        <li><a href="#book-game-basics">游戏基础</a></li>
+                        <li><a href="#book-cs-basics">计算机基础</a></li>
                     </ul>
                 </div>
             </nav>
@@ -56,12 +62,12 @@
                 <article>
                     <h1>推荐教程</h1>
 
-                    <h2>视频教程</h2>
+                    <h2 id="video-courses">视频教程</h2>
                     <p class="description">作者在b站上认为高质量的教程。</p>
 
                     
                     <section>
-                        <h3>【Unity教程】从0编程制作类银河恶魔城游戏 in Unity6</h3>
+                        <h3 id="video-unity-metroidvania">【Unity教程】从0编程制作类银河恶魔城游戏 in Unity6</h3>
                         <div style="position:relative;padding-top:56.25%;">
                             <iframe 
                                 src="//player.bilibili.com/player.html?isOutside=true&aid=114790399808437&bvid=BV1Zs3gzKEDP&cid=30836787664&p=1&autoplay=0"
@@ -73,7 +79,7 @@
                     </section>
 
                     <section>
-                        <h3>手把手带你制作视觉小说（文字冒险游戏）第0期 演示demo | Unity教程</h3>
+                        <h3 id="video-visual-novel">手把手带你制作视觉小说（文字冒险游戏）第0期 演示demo | Unity教程</h3>
                         <div style="position:relative;padding-top:56.25%;">
                             <iframe 
                                 src="//player.bilibili.com/player.html?isOutside=true&aid=113247650842176&bvid=BV1B44cetEyD&cid=26133991182&p=1&autoplay=0"
@@ -85,7 +91,7 @@
                     </section>
 
                     <section>
-                        <h3>Unity3D(2017高清)</h3>
+                        <h3 id="video-unity3d">Unity3D(2017高清)</h3>
                         <div style="position:relative;padding-top:56.25%;">
                             <iframe 
                                 src="//player.bilibili.com/player.html?isOutside=true&aid=33682065&bvid=BV19t411f7bg&cid=58969540&p=1&autoplay=0"
@@ -97,7 +103,7 @@
                     </section>
 
                     <section>
-                        <h3>【从零开始的C++游戏开发】船新版本的植物VS植物大乱斗 | EasyX制作植物明星大乱斗</h3>
+                        <h3 id="video-cpp-pvz">【从零开始的C++游戏开发】船新版本的植物VS植物大乱斗 | EasyX制作植物明星大乱斗</h3>
                         <div style="position:relative;padding-top:56.25%;">
                             <iframe 
                                 src="//player.bilibili.com/player.html?isOutside=true&aid=1005996349&bvid=BV1jx4y1t7eP&cid=1585594637&p=1&autoplay=0"
@@ -108,11 +114,11 @@
                         </div>
                     </section>
 
-                    <h2>书本教程</h2>
+                    <h2 id="book-courses">书本教程</h2>
                     <p class="description">列出作者推荐的书籍。</p>
 
                     <section>
-                        <h3>游戏设计</h3>
+                        <h3 id="book-game-design">游戏设计</h3>
                         <ul class="web-links">
                             <li>《游戏设计、原型与开发（第2版）》</li>
                             <li>《游戏设计艺术（第3版）》</li>
@@ -120,7 +126,7 @@
                     </section>
 
                     <section>
-                        <h3>游戏基础</h3>
+                        <h3 id="book-game-basics">游戏基础</h3>
                         <ul class="web-links">
                             <li>《游戏编程模式》</li>
                             <li>《游戏引擎架构》</li>
@@ -131,7 +137,7 @@
                     </section>
 
                     <section>
-                        <h3>计算机基础</h3>
+                        <h3 id="book-cs-basics">计算机基础</h3>
                         <ul class="web-links">
                             <li>《C++ Primer Plus（第5版）》</li>
                             <li>《C#本质论》</li>
@@ -141,37 +147,6 @@
                         </ul>
                     </section>
                 </article>
-                
-                <nav class="toc">
-                    <h3>本页目录</h3>
-                    <div class="toc-group">
-                        <a href="#" class="toc-title">视频教程</a>
-                        <ul>
-                            <li><a href="#">【Unity教程】从0编程制作类银河恶魔城游戏 in Unity6</a></li>
-                            <li><a href="#">手把手带你制作视觉小说（文字冒险游戏）第0期 演示demo | Unity教程</a></li>
-                            <li><a href="#">Unity3D(2017高清)</a></li>
-                            <li><a href="#">【从零开始的C++游戏开发】船新版本的植物VS植物大乱斗 | EasyX制作植物明星大乱斗</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="toc-group">
-                        <a href="#" class="toc-title">书本教程</a>
-                        <ul>
-                            <li><a href="#">游戏设计、原型与开发（第2版）</a></li>
-                            <li><a href="#">游戏设计艺术（第3版）</a></li>
-                            <li><a href="#">游戏编程模式</a></li>
-                            <li><a href="#">游戏引擎架构</a></li>
-                            <li><a href="#">游戏开发的数学和物理</a></li>
-                            <li><a href="#">3D数学基础：图形与游戏开发</a></li>
-                            <li><a href="#">网络多人游戏架构与编程</a></li>
-                            <li><a href="#">C++ Primer Plus（第5版）</a></li>
-                            <li><a href="#">C#本质论</a></li>
-                            <li><a href="#">数据结构</a></li>
-                            <li><a href="#">Hello 算法</a></li>
-                            <li><a href="#">算法导论</a></li>
-                        </ul>
-                    </div>
-                </nav>
             </main>
 
             <footer class="site-footer">

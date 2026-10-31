@@ -24,6 +24,19 @@ body {
     line-height: 1.6;
 }
 
+/* 左侧导航 → 正文锚点：整页平滑滚动 */
+@media (prefers-reduced-motion: no-preference) {
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* 跳转目标预留头部高度，避免被固定导航栏遮挡 */
+article h2,
+article h3 {
+    scroll-margin-top: calc(var(--header-height) + 16px);
+}
+
 /* 顶部导航 */
 .navbar {
     position: fixed;
@@ -209,8 +222,9 @@ body {
 
 article {
     width: 100%;
-    max-width: 800px;
+    max-width: 1040px; /* 原为 800px：正文占用原右侧目录腾出的横向空间 */
     flex: 1;
+    padding-right: 40px; /* 文本右侧与内容区右边缘之间留出适当空白 */
 }
 
 article h1 {
@@ -246,42 +260,6 @@ pre {
     overflow-x: auto;
     border: 1px solid var(--border);
     font-family: 'Courier New', Courier, monospace;
-}
-
-/* 右侧目录 */
-.toc {
-    width: 200px;
-    position: sticky;
-    top: calc(var(--header-height) + 40px);
-    height: fit-content;
-}
-
-.toc-title{
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: color 0.2s;
-}
-
-.toc ul{
-    list-style: none;
-}
-
-.toc li a{
-    text-decoration: none;
-    color: var(--text-muted);
-    padding: 8px 12px;
-    font-size: 0.9rem;
-    transition: color 0.2s;
-}
-
-.toc a:link,
-.toc a:visited,
-.toc a:active{
-    color: var(--text-muted);
-}
-
-.toc a:hover {
-    color: var(--text-main);
 }
 
 /* 页脚样式 */
@@ -383,14 +361,10 @@ pre {
         gap: 24px;
     }
 
-    /* 5. 隐藏右侧“本页目录” (手机端屏幕窄，不适合展示目录) */
-    .toc {
-        display: none;
-    }
-
-    /* 6. 文章主体宽度撑满 */
+    /* 5. 文章主体宽度撑满（右侧目录已移除，此处不再需要额外留白） */
     article {
         width: 100%;
+        padding-right: 0;
     }
 
     article h1 {
@@ -403,7 +377,7 @@ pre {
         margin-bottom: 1.5rem;
     }
 
-    /* 7. 页脚自适应：在小屏上居中展示 */
+    /* 6. 页脚自适应：在小屏上居中展示 */
     .footer-container {
         padding: 16px 20px;
         flex-direction: column;
@@ -417,10 +391,7 @@ pre {
    平板端适配代码 (屏幕宽度 769px 至 1024px)
 ============================================== */
 @media (min-width: 769px) and (max-width: 1024px) {
-    /* 平板端空间较电脑小，我们仅隐藏右边的「本页目录」，腾出位置给主正文和左侧边栏 */
-    .toc {
-        display: none;
-    }
+    /* 平板端空间较电脑小：右侧目录已移除，这里仅调整内容区内边距 */
     .content {
         padding: 30px 40px;
     }
